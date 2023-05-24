@@ -17,13 +17,16 @@ class Test_stack(unittest.TestCase):
 
     def test_stack(self):
         st = stack.Stack()
+        self.assertEquals(st.top, None)
         st.push('data1')
         st.push('data2')
+        self.assertEquals(st.top.next_node.next_node, None)
         st.push('data3')
         self.assertEquals(st.top.data, 'data3')
         self.assertEquals(st.top.next_node.data, 'data2')
         self.assertEquals(st.top.next_node.next_node.data,  'data1')
-        self.assertIsNone(st.top.next_node.next_node.next_node)
+        self.assertEquals(st.top.next_node.next_node.data, 'data1')
+
 
     def test_stack2(self):
         st = stack.Stack()
