@@ -33,3 +33,26 @@ class Test_stack(unittest.TestCase):
         st.push('data1')
 
         self.assertEquals(st.top.data, 'data1')
+
+    def test_pop(self):
+        st = stack.Stack()
+        st.push('data1')
+        data1 = st.pop()
+
+        # стэк стал пустой
+        self.assertEquals(st.top, None)
+
+        # pop() удаляет элемент и возвращает данные удаленного элемента
+
+        self.assertEquals(data1, 'data1')
+
+        st2 = stack.Stack()
+        st2.push('data1')
+        st2.push('data2')
+        data2 = st2.pop()
+
+        # теперь последний элемента содержит данные data1
+        self.assertEquals(st2.top.data , 'data1')
+
+        # данные удаленного элемента
+        self.assertEquals(data2, 'data2')
