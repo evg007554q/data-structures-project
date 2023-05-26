@@ -41,3 +41,21 @@ class Stack:
         self.top=self.top.next_node
         return del_st
 
+    def __str__(self):
+        """Магический метод для строкового представления объекта"""
+
+        if self.top == None:
+            return ""
+        else:
+            str_self = ""
+
+            top = self.top
+
+            while top != None:
+                str_self += top.data
+
+                top = top.next_node
+                if top != None:
+                    str_self += '\n'
+
+            return str_self

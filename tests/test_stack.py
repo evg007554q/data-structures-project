@@ -3,6 +3,8 @@ import unittest
 
 from src import stack
 
+from src import queue
+from src.queue import Queue
 
 
 class Test_stack(unittest.TestCase):
@@ -49,6 +51,7 @@ class Test_stack(unittest.TestCase):
         st2 = stack.Stack()
         st2.push('data1')
         st2.push('data2')
+
         data2 = st2.pop()
 
         # теперь последний элемента содержит данные data1
@@ -56,3 +59,26 @@ class Test_stack(unittest.TestCase):
 
         # данные удаленного элемента
         self.assertEquals(data2, 'data2')
+
+    def test_HW3_stack(self):
+        # HW3 test __str__
+        st = stack.Stack()
+        st.push('data1')
+        st.push('data2')
+        print(str(st))
+        self.assertEquals(str(st), 'data2\ndata1')
+    def test_HW3_Queue(self):
+        # HW3 test Queue
+        qu1 = Queue()
+
+        self.assertEquals(str(qu1), '')
+        qu1.enqueue('data1')
+        qu1.enqueue('data2')
+        qu1.enqueue('data3')
+        self.assertEquals(qu1.head.data, 'data1')
+        self.assertEquals(qu1.head.next_node.data, 'data2')
+        self.assertEquals(qu1.tail.data, 'data3')
+        self.assertIsNone(qu1.tail.next_node.data)
+
+        # assert str(queue) == "data1\ndata2\ndata3"
+        self.assertEquals(str(qu1), "data1\ndata2\ndata3")
